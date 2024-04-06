@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "GErPbyz3kwKzkWIXnk95PBXFMUq7vGGBCXFJnZuOPwo=",
+  "Source": "WebSuggestAPI",
+  "BasePath": "_content/WebSuggestAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
