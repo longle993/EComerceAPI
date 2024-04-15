@@ -12,3 +12,4 @@ D:\Long Le\Code quá 180'\WebSuggestAPI\WebSuggestAPI.Model\obj\Debug\net8.0\ref
 D:\Long Le\Code quá 180'\WebSuggestAPI\WebSuggestAPI.Model\obj\Debug\net8.0\WebSuggestAPI.Model.pdb
 D:\Long Le\Code quá 180'\WebSuggestAPI\WebSuggestAPI.Model\obj\Debug\net8.0\WebSuggestAPI.Model.genruntimeconfig.cache
 D:\Long Le\Code quá 180'\WebSuggestAPI\WebSuggestAPI.Model\obj\Debug\net8.0\ref\WebSuggestAPI.Model.dll
+D:\Long Le\Code quá 180'\WebSuggestAPI\WebSuggestAPI.Model\obj\Debug\net8.0\WebSuggestAPI.Model.sourcelink.json

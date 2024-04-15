@@ -17,3 +17,4 @@ D:\Long Le\Code quá 180'\WebSuggestAPI\WebSuggestAPI.Repository\bin\Debug\net8.
 D:\Long Le\Code quá 180'\WebSuggestAPI\WebSuggestAPI.Repository\bin\Debug\net8.0\WebSuggestAPI.Interface.pdb
 D:\Long Le\Code quá 180'\WebSuggestAPI\WebSuggestAPI.Repository\bin\Debug\net8.0\WebSuggestAPI.Model.pdb
 D:\Long Le\Code quá 180'\WebSuggestAPI\WebSuggestAPI.Repository\obj\Debug\net8.0\WebSuggestAPI.Repository.csproj.CopyComplete
+D:\Long Le\Code quá 180'\WebSuggestAPI\WebSuggestAPI.Repository\obj\Debug\net8.0\WebSuggestAPI.Repository.sourcelink.json

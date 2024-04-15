@@ -134,5 +134,54 @@ namespace WebSuggestAPI.Controllers
                 return BadRequest(response);
             }
         }
+
+        [HttpGet("get-suggest-product")]
+        public async Task<ActionResult<ResponseInfo>> GetSuggestProduct()
+        {
+            ResponseInfo response = new ResponseInfo();
+            try
+            {
+                ErrorMessageInfo errorInfo = await sanPhamRepository.SuggestProduct();
+                response.statusCode = System.Net.HttpStatusCode.OK;
+                if (errorInfo.isErrorEx || !errorInfo.isSuccess)
+                {
+                    response.error_code = errorInfo.error_code;
+                    response.message = errorInfo.message;
+                    return BadRequest(response);
+                }
+                response.data = errorInfo.data;
+                return await Task.FromResult(response);
+            }
+            catch (Exception ex)
+            {
+                response.statusCode = System.Net.HttpStatusCode.BadRequest;
+                response.message = ex.Message;
+                return BadRequest(response);
+            }
+        }
+        [HttpGet("get-frequence-product")]
+        public async Task<ActionResult<ResponseInfo>> GetFrequenceProducts()
+        {
+            ResponseInfo response = new ResponseInfo();
+            try
+            {
+                ErrorMessageInfo errorInfo = await sanPhamRepository.GetFrequenceProduct();
+                response.statusCode = System.Net.HttpStatusCode.OK;
+                if (errorInfo.isErrorEx || !errorInfo.isSuccess)
+                {
+                    response.error_code = errorInfo.error_code;
+                    response.message = errorInfo.message;
+                    return BadRequest(response);
+                }
+                response.data = errorInfo.data;
+                return await Task.FromResult(response);
+            }
+            catch (Exception ex)
+            {
+                response.statusCode = System.Net.HttpStatusCode.BadRequest;
+                response.message = ex.Message;
+                return BadRequest(response);
+            }
+        }
     }
 }

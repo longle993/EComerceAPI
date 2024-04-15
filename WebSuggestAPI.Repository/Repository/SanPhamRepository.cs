@@ -19,6 +19,8 @@ namespace WebSuggestAPI.Repository.Repository
     {
         private DbContextWebSuggest db;
         private string connectionString;
+        private ImproveAlgorithm algorithm; 
+
 
         public SanPhamRepository(DbContextWebSuggest db, IConfiguration configuration)
         {
@@ -169,19 +171,15 @@ namespace WebSuggestAPI.Repository.Repository
             return error;
         }
 
-        public async Task<ErrorMessageInfo> SuggestProduct(string id)
+        public async Task<ErrorMessageInfo> SuggestProduct()
         {
+            this.algorithm = new ImproveAlgorithm(db, 0.15);
+
             ErrorMessageInfo error = new ErrorMessageInfo();
             try
             {
-                var ts1sp = db.TanSuatMotSanPhams.ToList();
-                var ts2sp = db.TanSuatHaiSanPhams.ToList();
-                db.RemoveRange(ts1sp);
-                db.RemoveRange(ts2sp);
-                db.SaveChanges();
-
-                ImproveAlgorithm algorithm = new ImproveAlgorithm(db, 0.15);
-                error.data = algorithm.Execute();
+                this.algorithm.Execute();
+                error.data = this.algorithm.Listtong;
                 error.isSuccess = true;
             }
             catch (Exception e)
@@ -191,6 +189,31 @@ namespace WebSuggestAPI.Repository.Repository
             }
             return error;
 
+        }
+
+        public async Task<ErrorMessageInfo> GetFrequenceProduct()
+        {
+            ErrorMessageInfo error = new ErrorMessageInfo();
+            try
+            {
+                int count = Convert.ToInt32(db.TanSuatMotSanPhams.Count() * 0.1);
+                error.isSuccess = true;
+                List<TanSuatMotSanPham> listTanSuat = db.TanSuatMotSanPhams.Where(p=> p.TanSuat > count).ToList();
+                List<SanPham> listSanPhamFrequence = new List<SanPham>();
+
+                listTanSuat.ForEach(item =>
+                {
+                   listSanPhamFrequence.Add(db.SanPhams.Where(p=>p.IdSanPham == item.IdSanPham).SingleOrDefault());
+                });
+                error.data = listSanPhamFrequence;
+            }
+            catch(Exception ex)
+            {
+                error.isErrorEx = true;
+                error.message = ex.Message;
+                error.error_code = "ErrFrequenceProduct";
+            }
+            return error;
         }
     }
 }

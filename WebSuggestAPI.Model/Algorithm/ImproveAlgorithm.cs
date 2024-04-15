@@ -16,14 +16,33 @@ namespace WebSuggestAPI.Model.Algorithm
         private double s_min;
         List<List<List<SanPham>>> listtong;
 
+        public List<List<List<SanPham>>> Listtong { get => listtong; set => listtong = value; }
+
         public ImproveAlgorithm(DbContextWebSuggest db,double s_min)
         {
             this.db = db;
             this.s_min = s_min;
             listtong = new List<List<List<SanPham>>>();
+            BrowseBill();
         }
 
-        public List<List<List<SanPham>>> Execute()
+        public void Execute()
+        {
+            GetPotentialProduct();
+        }
+
+        private void BrowseBill()
+        {
+            var ts1sp = db.TanSuatMotSanPhams.ToList();
+            var ts2sp = db.TanSuatHaiSanPhams.ToList();
+            db.RemoveRange(ts1sp);
+            db.RemoveRange(ts2sp);
+            db.SaveChanges();
+
+            XuLyHoaDonCach2();
+           
+        }
+        private void XuLyHoaDonCach2()
         {
             var hoadons = db.HoaDons.ToList();
             var ldssp = db.SanPhams.ToList();
@@ -139,9 +158,6 @@ namespace WebSuggestAPI.Model.Algorithm
 
             }
             db.SaveChanges();
-
-            GetPotentialProduct();
-            return this.listtong;
         }
         private async void GetPotentialProduct()
         {

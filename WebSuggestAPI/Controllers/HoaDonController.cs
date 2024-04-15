@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebSuggestAPI.Interface.Interface;
 using WebSuggestAPI.Model;
+using WebSuggestAPI.Model.Model;
 using WebSuggestAPI.Repository.Repository;
 
 namespace WebSuggestAPI.Controllers
@@ -22,6 +23,31 @@ namespace WebSuggestAPI.Controllers
             try
             {
                 ErrorMessageInfo errorInfo = await hoadonRepository.GetHoaDon();
+                response.statusCode = System.Net.HttpStatusCode.OK;
+                if (errorInfo.isErrorEx || !errorInfo.isSuccess)
+                {
+                    response.error_code = errorInfo.error_code;
+                    response.message = errorInfo.message;
+                    return BadRequest(response);
+                }
+                response.data = errorInfo.data;
+                return await Task.FromResult(response);
+            }
+            catch (Exception ex)
+            {
+                response.statusCode = System.Net.HttpStatusCode.BadRequest;
+                response.message = ex.Message;
+                return BadRequest(response);
+            }
+        }
+
+        [HttpPost("add-bill")]
+        public async Task<ActionResult<ResponseInfo>> AddBill(HoaDon hoaDon)
+        {
+            ResponseInfo response = new ResponseInfo();
+            try
+            {
+                ErrorMessageInfo errorInfo = await hoadonRepository.AddHoaDon(hoaDon);
                 response.statusCode = System.Net.HttpStatusCode.OK;
                 if (errorInfo.isErrorEx || !errorInfo.isSuccess)
                 {

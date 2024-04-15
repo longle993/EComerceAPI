@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using WebSuggestAPI.Interface.Interface;
 using WebSuggestAPI.Model;
 using WebSuggestAPI.Model.Model;
+using Microsoft.Extensions.Configuration;
 
 namespace WebSuggestAPI.Repository.Repository
 {
@@ -17,15 +18,30 @@ namespace WebSuggestAPI.Repository.Repository
         private DbContextWebSuggest db;
         private string connectionString;
 
-        public HoaDonRepository(DbContextWebSuggest db, string connectionString)
+        public HoaDonRepository(DbContextWebSuggest db, IConfiguration configuration)
         {
             this.db = db;
-            this.connectionString = connectionString;
+            this.connectionString = configuration.GetConnectionString("connectionString");
         }
 
-        public Task<ErrorMessageInfo> AddHoaDon(HoaDon newhoadon)
+        public async Task<ErrorMessageInfo> AddHoaDon(HoaDon newhoadon)
         {
-            throw new NotImplementedException();
+            ErrorMessageInfo error = new ErrorMessageInfo();
+            try
+            {
+                
+                db.HoaDons.Add(newhoadon);
+                db.SaveChanges();
+                error.isSuccess = true;
+                error.message = "Add new bill Success";
+            }
+            catch(Exception ex)
+            {
+                error.isErrorEx = true;
+                error.message = ex.Message;
+                error.error_code = "ErrorAddHoaDon";
+            }
+            return error;
         }
 
         public async Task<ErrorMessageInfo> GetHoaDon()

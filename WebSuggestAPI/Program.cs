@@ -11,14 +11,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddTransient<ISanPhamRepository,SanPhamRepository>();
+builder.Services.AddTransient<ISanPhamRepository, SanPhamRepository>();
 builder.Services.AddTransient<IHoaDonRepository, HoaDonRepository>();
 
 builder.Services.AddDbContext<DbContextWebSuggest>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("connectionString")));
 builder.Services.AddControllers();
 
-
+builder.Services.AddCors(p => p.AddPolicy("OpenCors", build =>
+{
+    build.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
 
 var app = builder.Build();
 
@@ -28,6 +31,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors("OpenCors");
+
 
 app.UseHttpsRedirection();
 
