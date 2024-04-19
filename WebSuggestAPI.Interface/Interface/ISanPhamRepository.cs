@@ -13,7 +13,7 @@ namespace WebSuggestAPI.Interface.Interface
         Task<ErrorMessageInfo> GetProductById(string id);
         Task<ErrorMessageInfo> GetProductByName(string name);
         Task<ErrorMessageInfo> GetProductByType(string type);
-        Task<ErrorMessageInfo> SuggestProduct();
+        Task<ErrorMessageInfo> SuggestProduct(string productId);
         Task<ErrorMessageInfo> GetProductType();
         Task<ErrorMessageInfo> GetFrequenceProduct();
 

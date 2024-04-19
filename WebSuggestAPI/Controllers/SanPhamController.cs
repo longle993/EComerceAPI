@@ -136,12 +136,12 @@ namespace WebSuggestAPI.Controllers
         }
 
         [HttpGet("get-suggest-product")]
-        public async Task<ActionResult<ResponseInfo>> GetSuggestProduct()
+        public async Task<ActionResult<ResponseInfo>> GetSuggestProduct(string productId)
         {
             ResponseInfo response = new ResponseInfo();
             try
             {
-                ErrorMessageInfo errorInfo = await sanPhamRepository.SuggestProduct();
+                ErrorMessageInfo errorInfo = await sanPhamRepository.SuggestProduct(productId);
                 response.statusCode = System.Net.HttpStatusCode.OK;
                 if (errorInfo.isErrorEx || !errorInfo.isSuccess)
                 {

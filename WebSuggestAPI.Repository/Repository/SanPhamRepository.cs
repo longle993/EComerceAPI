@@ -171,15 +171,28 @@ namespace WebSuggestAPI.Repository.Repository
             return error;
         }
 
-        public async Task<ErrorMessageInfo> SuggestProduct()
+        public async Task<ErrorMessageInfo> SuggestProduct(string productId)
         {
             this.algorithm = new ImproveAlgorithm(db, 0.05);
 
             ErrorMessageInfo error = new ErrorMessageInfo();
             try
             {
-                this.algorithm.Execute();
-                error.data = this.algorithm.Listtong;
+                List<List<SanPham>> listResults = new List<List<SanPham>>();
+                List<SanPham> spFinals = new List<SanPham>();
+                this.algorithm.Execute(productId);
+                listResults = this.algorithm.ListResult;
+                listResults.ForEach(item =>
+                {
+                    item.ForEach(product =>
+                    {
+                        if(product.IdSanPham != productId)
+                            spFinals.Add(product);
+                    });
+                });
+                spFinals = spFinals.Distinct().ToList();
+
+                error.data = spFinals;
                 error.isSuccess = true;
             }
             catch (Exception e)

@@ -15,20 +15,31 @@ namespace WebSuggestAPI.Model.Algorithm
         private DbContextWebSuggest db;
         private double s_min;
         List<List<List<SanPham>>> listtong;
+        List<List<SanPham>> listResult;
+        
+
 
         public List<List<List<SanPham>>> Listtong { get => listtong; set => listtong = value; }
+        public List<List<SanPham>> ListResult { get => listResult; set => listResult = value; }
 
         public ImproveAlgorithm(DbContextWebSuggest db,double s_min)
         {
             this.db = db;
             this.s_min = s_min;
             listtong = new List<List<List<SanPham>>>();
+            listResult = new List<List<SanPham>>();
             BrowseBill();
         }
 
-        public void Execute()
+        public void Execute(string productId)
         {
             GetPotentialProduct();
+                
+            foreach (List<List<SanPham>> item in listtong)
+            {
+                if (item[0].Count > 1 && item[0].Any(product => product.IdSanPham == productId))
+                    listResult.Add(item[0]);
+            }
         }
 
         private void BrowseBill()

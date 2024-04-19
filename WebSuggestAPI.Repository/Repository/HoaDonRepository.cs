@@ -29,9 +29,9 @@ namespace WebSuggestAPI.Repository.Repository
             ErrorMessageInfo error = new ErrorMessageInfo();
             try
             {
-                
+                HoaDonShow newHoaDonShow = new HoaDonShow(newhoadon.IdHoaDon, newhoadon.SanPham);   
                 db.HoaDons.Add(newhoadon);
-                
+                db.HoaDonShows.Add(newHoaDonShow);
                 db.SaveChanges();
                 error.isSuccess = true;
                 error.message = "Add new bill Success";
@@ -51,7 +51,7 @@ namespace WebSuggestAPI.Repository.Repository
             try
             {
                 error.isSuccess = true;
-                error.data = await db.HoaDons.ToListAsync();
+                error.data = await db.HoaDonShows.ToListAsync();
             }
             catch (Exception ex)
             {
