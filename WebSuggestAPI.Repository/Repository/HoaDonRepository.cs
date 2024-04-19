@@ -31,6 +31,7 @@ namespace WebSuggestAPI.Repository.Repository
             {
                 
                 db.HoaDons.Add(newhoadon);
+                
                 db.SaveChanges();
                 error.isSuccess = true;
                 error.message = "Add new bill Success";

@@ -173,7 +173,7 @@ namespace WebSuggestAPI.Repository.Repository
 
         public async Task<ErrorMessageInfo> SuggestProduct()
         {
-            this.algorithm = new ImproveAlgorithm(db, 0.15);
+            this.algorithm = new ImproveAlgorithm(db, 0.05);
 
             ErrorMessageInfo error = new ErrorMessageInfo();
             try
@@ -196,16 +196,16 @@ namespace WebSuggestAPI.Repository.Repository
             ErrorMessageInfo error = new ErrorMessageInfo();
             try
             {
-                int count = Convert.ToInt32(db.TanSuatMotSanPhams.Count() * 0.1);
                 error.isSuccess = true;
-                List<TanSuatMotSanPham> listTanSuat = db.TanSuatMotSanPhams.Where(p=> p.TanSuat > count).ToList();
+                List<TanSuatMotSanPham> listTanSuat = db.TanSuatMotSanPhams.ToList();
                 List<SanPham> listSanPhamFrequence = new List<SanPham>();
-
+                
                 listTanSuat.ForEach(item =>
                 {
                    listSanPhamFrequence.Add(db.SanPhams.Where(p=>p.IdSanPham == item.IdSanPham).SingleOrDefault());
                 });
                 error.data = listSanPhamFrequence;
+
             }
             catch(Exception ex)
             {

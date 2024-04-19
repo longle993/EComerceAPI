@@ -18,6 +18,8 @@ public partial class DbContextWebSuggest : DbContext
     public virtual DbSet<HinhAnhSanPham> HinhAnhSanPhams { get; set; }
 
     public virtual DbSet<HoaDon> HoaDons { get; set; }
+    public virtual DbSet<HoaDonShow> HoaDonShows { get; set; }
+
 
     public virtual DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
 
@@ -58,6 +60,15 @@ public partial class DbContextWebSuggest : DbContext
             entity.HasKey(e => e.IdHoaDon).HasName("PK__HoaDon__4DD461C8B25AFB7F");
 
             entity.ToTable("HoaDon");
+
+            entity.Property(e => e.IdHoaDon).HasMaxLength(255);
+        });
+
+        modelBuilder.Entity<HoaDonShow>(entity =>
+        {
+            entity.HasKey(e => e.IdHoaDon).HasName("PK__HoaDonShow__4DD461C8B25AFB7F");
+
+            entity.ToTable("HoaDonShow");
 
             entity.Property(e => e.IdHoaDon).HasMaxLength(255);
         });
