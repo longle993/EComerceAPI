@@ -173,7 +173,7 @@ namespace WebSuggestAPI.Repository.Repository
 
         public async Task<ErrorMessageInfo> SuggestProduct(string productId)
         {
-            this.algorithm = new ImproveAlgorithm(db, 0.05);
+            this.algorithm = new ImproveAlgorithm(db, 0.03);
 
             ErrorMessageInfo error = new ErrorMessageInfo();
             try

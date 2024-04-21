@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebSuggestAPI.Repository")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ef61bf72aa7833d83faf7f8c27e4d5992615612d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af4f37102a16a4ddab650c62cfe278e560a734d4")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebSuggestAPI.Repository")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebSuggestAPI.Repository")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

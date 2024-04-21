@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "yOyJjHPShHOrKy3PalpDDX0tH0T2fNWCJ2MJ4U82vQ2t8A2baFvHWhbPmkKM++20n2zNzm9fIHsnXF7QSN3joQ==",
+  "dgSpecHash": "V4sZQgPpswa5XAjZl7D1q0vWLeX3kstbzsWMV56iXADSbCABLOucO77FCBELhQyxPrdKDK8Gk0788xtc1Y5vkQ==",
   "success": true,
   "projectFilePath": "D:\\Long Le\\Code quá 180'\\WebSuggestAPI\\WebSuggestAPI.Model\\WebSuggestAPI.Model.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\combinatorics\\2.0.0\\combinatorics.2.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.3\\microsoft.aspnetcore.authentication.jwtbearer.8.0.3.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

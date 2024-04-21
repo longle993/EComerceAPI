@@ -14,6 +14,8 @@ public partial class DbContextWebSuggest : DbContext
         : base(options)
     {
     }
+    public virtual DbSet<DanhSachPhoBien> DanhSachPhoBiens { get; set; }
+
 
     public virtual DbSet<HinhAnhSanPham> HinhAnhSanPhams { get; set; }
 
@@ -34,6 +36,14 @@ public partial class DbContextWebSuggest : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<DanhSachPhoBien>(entity =>
+        {
+            entity.ToTable("DanhSachPhoBien");
+            entity.HasKey(e => e.IdSanPham).HasName("PK__DanhSach__5FFA2D42DFEA5EBD"); 
+            entity.Property(e => e.IdSanPham).IsRequired();
+            entity.Property(e => e.TanSuat); 
+        });
+
         modelBuilder.Entity<HinhAnhSanPham>(entity =>
         {
             entity.HasKey(e => e.IdHinhAnh).HasName("PK__HinhAnhS__97A548CFC12CBAA1");

@@ -46,6 +46,19 @@
           }
         }
       },
+      "Combinatorics/2.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Combinatorics.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Combinatorics.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -1537,6 +1550,24 @@
         "azureicon.png",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
+      ]
+    },
+    "Combinatorics/2.0.0": {
+      "sha512": "E00cVYTp5FTCMN9DnY64zoM3ihboRW2of8zX18OqpCtUGdyqtZk3WC7wmSp5qc15UoBa+st8VoDsm+O22tkTaQ==",
+      "type": "package",
+      "path": "combinatorics/2.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "combinatorics.2.0.0.nupkg.sha512",
+        "combinatorics.nuspec",
+        "icon.png",
+        "lib/net461/Combinatorics.dll",
+        "lib/net461/Combinatorics.xml",
+        "lib/netstandard1.1/Combinatorics.dll",
+        "lib/netstandard1.1/Combinatorics.xml",
+        "lib/netstandard2.0/Combinatorics.dll",
+        "lib/netstandard2.0/Combinatorics.xml"
       ]
     },
     "Humanizer.Core/2.14.1": {
@@ -3893,6 +3924,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Combinatorics >= 2.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.3",
       "Microsoft.EntityFrameworkCore >= 8.0.3",
       "Microsoft.EntityFrameworkCore.InMemory >= 8.0.3",
@@ -3940,6 +3972,10 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Combinatorics": {
+            "target": "Package",
+            "version": "[2.0.0, )"
+          },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
             "version": "[8.0.3, )"
